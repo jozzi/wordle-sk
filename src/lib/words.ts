@@ -1,11 +1,9 @@
 import { WORDS } from '../constants/wordlist'
-import { VALIDGUESSES } from '../constants/validGuesses'
 
+
+// allow free guesses to make game easier in slovak version
 export const isWordInWordList = (word: string) => {
-  return (
-    WORDS.includes(word.toLowerCase()) ||
-    VALIDGUESSES.includes(word.toLowerCase())
-  )
+  return true;
 }
 
 export const isWinningWord = (word: string) => {

@@ -1,3 +1,18 @@
+const infoStateKey = 'infoState'
+
+type StoredInfoState = {
+  infoWatched: boolean
+}
+
+export const saveInfoStateToLocalStorage = (infoState: StoredInfoState) => {
+  localStorage.setItem(infoStateKey, JSON.stringify(infoState))
+}
+
+export const loadInfoStateFromLocalStorage = () => {
+  const state = localStorage.getItem(infoStateKey)
+  return state ? (JSON.parse(state) as StoredInfoState) : null
+}
+
 const gameStateKey = 'gameState'
 
 type StoredGameState = {
@@ -15,6 +30,8 @@ export const loadGameStateFromLocalStorage = () => {
 }
 
 const gameStatKey = 'gameStats'
+
+
 
 export type GameStats = {
   winDistribution: number[]
