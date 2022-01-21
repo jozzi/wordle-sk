@@ -57,24 +57,35 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    About
+                    O hre
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      This is an open source clone of the game Wordle -{' '}
+                      Toto je slovenský klon hry Wordle -{' '}
                       <a
-                        href="https://github.com/hannahcode/wordle"
+                        href="https://github.com/jozzi/wordle"
                         className="underline font-bold"
                       >
-                        check out the code here
+                        pozrite si zdrojáky
                       </a>{' '}
-                      and{' '}
+                      a{' '}
                       <a
                         href="https://www.powerlanguage.co.uk/wordle/"
                         className="underline font-bold"
                       >
-                        play the original here
+                        zahrajte si aj anglický originál.
                       </a>
+                      <br />
+                      <br />
+                      Hra je postavená na základe source kodu autorky Hannah
+                      Park. Jej repo si môžete{' '}
+                      <a
+                        href="https://github.com/hannahcode/wordle"
+                        className="underline font-bold"
+                      >
+                        pozrieť tu
+                      </a>
+                      .
                     </p>
                   </div>
                 </div>

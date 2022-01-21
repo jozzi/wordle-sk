@@ -37,7 +37,7 @@ export const WinModal = ({
           >
             <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
-          
+
           {/* This element is to trick the browser into centering the modal contents. */}
           <span
             className="hidden sm:inline-block sm:align-middle sm:h-screen"
@@ -73,11 +73,11 @@ export const WinModal = ({
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    You won!
+                    Vyhrali ste!
                   </Dialog.Title>
                   <div className="mt-2">
                     <MiniGrid guesses={guesses} />
-                    <p className="text-sm text-gray-500">Great job.</p>
+                    <p className="text-sm text-gray-500">Výborne.</p>
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export const WinModal = ({
                     handleShare()
                   }}
                 >
-                  Share
+                  Zdieľať
                 </button>
               </div>
             </div>
