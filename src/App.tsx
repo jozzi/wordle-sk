@@ -105,6 +105,13 @@ function App() {
     setIsInfoModalOpen(false)
   }
 
+  const resetGame = () => {
+    setGuesses([])
+    setCurrentGuess('')
+    setIsGameWon(false)
+    setIsGameLost(false)
+  }
+
   return (
     <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <Alert message="Málo písmen" isOpen={isNotEnoughLetters} />
@@ -126,10 +133,7 @@ function App() {
         />
         <RefreshIcon
           className="h-6 w-6 ml-2 cursor-pointer"
-          onClick={() => {
-            setGuesses([])
-            setCurrentGuess('')
-          }}
+          onClick={resetGame}
         />
       </div>
       <Grid guesses={guesses} currentGuess={currentGuess} />
