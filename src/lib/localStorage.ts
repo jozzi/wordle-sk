@@ -13,23 +13,10 @@ export const loadInfoStateFromLocalStorage = () => {
   return state ? (JSON.parse(state) as StoredInfoState) : null
 }
 
-const todayWonState = 'todayWonState'
-
-
-const getDate = () => {
+export const getDate = () => {
   const d = new Date()
 
   return `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`
-}
-
-export const saveTodayWonToLocalStorage = () => {
-  const today = getDate()
-  localStorage.setItem(todayWonState, JSON.stringify({ [today]: true }))
-}
-
-export const getHadTodayWonFromLocalStorage = () => {
-  const state = JSON.parse(localStorage.getItem(todayWonState) || '{}') as Record<string, boolean>
-  return !!state[getDate()]
 }
 
 const gameStateKey = 'gameState'
@@ -50,8 +37,6 @@ export const loadGameStateFromLocalStorage = () => {
 
 const gameStatKey = 'gameStats'
 
-
-
 export type GameStats = {
   winDistribution: number[]
   gamesFailed: number
@@ -68,4 +53,20 @@ export const saveStatsToLocalStorage = (gameStats: GameStats) => {
 export const loadStatsFromLocalStorage = () => {
   const stats = localStorage.getItem(gameStatKey)
   return stats ? (JSON.parse(stats) as GameStats) : null
+}
+
+
+const gameSettingsKey = 'gameSettings'
+
+export type GameSettings = {
+  useQuerty: boolean
+}
+
+export const saveSettingsToLocalStorage = (gameSettings: GameSettings) => {
+  localStorage.setItem(gameSettingsKey, JSON.stringify(gameSettings))
+}
+
+export const loadSettingsFromLocalStorage = () => {
+  const settings = localStorage.getItem(gameSettingsKey)
+  return settings ? (JSON.parse(settings) as GameSettings) : null
 }

@@ -4,13 +4,20 @@ import { Key } from './Key'
 import { useEffect } from 'react'
 
 type Props = {
+  guesses: string[]
+  useQuerty: boolean
   onChar: (value: string) => void
   onDelete: () => void
   onEnter: () => void
-  guesses: string[]
 }
 
-export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
+export const Keyboard = ({
+  useQuerty,
+  onChar,
+  onDelete,
+  onEnter,
+  guesses,
+}: Props) => {
   const charStatuses = getStatuses(guesses)
 
   const onClick = (value: KeyValue) => {
@@ -62,7 +69,11 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         <Key value="E" onClick={onClick} status={charStatuses['E']} />
         <Key value="R" onClick={onClick} status={charStatuses['R']} />
         <Key value="T" onClick={onClick} status={charStatuses['T']} />
-        <Key value="Z" onClick={onClick} status={charStatuses['Z']} />
+        {useQuerty ? (
+          <Key value="Y" onClick={onClick} status={charStatuses['Y']} />
+        ) : (
+          <Key value="Z" onClick={onClick} status={charStatuses['Z']} />
+        )}
         <Key value="U" onClick={onClick} status={charStatuses['U']} />
         <Key value="I" onClick={onClick} status={charStatuses['I']} />
         <Key value="O" onClick={onClick} status={charStatuses['O']} />
@@ -87,7 +98,12 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         <Key width={65.4} value="ENTER" onClick={onClick}>
           Enter
         </Key>
-        <Key value="Y" onClick={onClick} status={charStatuses['Y']} />
+        {useQuerty ? (
+          <Key value="Z" onClick={onClick} status={charStatuses['Z']} />
+        ) : (
+          <Key value="Y" onClick={onClick} status={charStatuses['Y']} />
+        )}
+
         <Key value="X" onClick={onClick} status={charStatuses['X']} />
         <Key value="C" onClick={onClick} status={charStatuses['C']} />
         <Key value="V" onClick={onClick} status={charStatuses['V']} />
