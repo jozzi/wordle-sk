@@ -62,8 +62,13 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
+                      Každý deň hra ponúka nové slovo na hádanie. Ak ho
+                      neuhádnete môžete pokus opakovať.
+                    </p>
+                    <br />
+                    <p className="text-sm text-gray-500">
                       Uhádnite slovo na 6 pokusov. Po každom pokuse, sa hádané
-                      písmená zafarbia aby ste vedeli či ste trafili.
+                      písmená zafarbia aby ste vedeli či ste sa trafili.
                       <br />
                       <br />
                       Podľa farby písmen viete, či sa nachádza aj v hádanom

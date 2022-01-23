@@ -13,6 +13,25 @@ export const loadInfoStateFromLocalStorage = () => {
   return state ? (JSON.parse(state) as StoredInfoState) : null
 }
 
+const todayWonState = 'todayWonState'
+
+
+const getDate = () => {
+  const d = new Date()
+
+  return `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`
+}
+
+export const saveTodayWonToLocalStorage = () => {
+  const today = getDate()
+  localStorage.setItem(todayWonState, JSON.stringify({ [today]: true }))
+}
+
+export const getHadTodayWonFromLocalStorage = () => {
+  const state = JSON.parse(localStorage.getItem(todayWonState) || '{}') as Record<string, boolean>
+  return !!state[getDate()]
+}
+
 const gameStateKey = 'gameState'
 
 type StoredGameState = {

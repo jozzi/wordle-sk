@@ -78,6 +78,9 @@ export const WinModal = ({
                   <div className="mt-2">
                     <MiniGrid guesses={guesses} />
                     <p className="text-sm text-gray-500">Výborne.</p>
+                    <p className="text-sm text-gray-500">
+                      Skúste to opäť zajtra.
+                    </p>
                   </div>
                 </div>
               </div>

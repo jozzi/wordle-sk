@@ -9,14 +9,17 @@ import { WinModal } from './components/modals/WinModal'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
+  getHadTodayWonFromLocalStorage,
   loadGameStateFromLocalStorage,
   loadInfoStateFromLocalStorage,
   saveGameStateToLocalStorage,
   saveInfoStateToLocalStorage,
+  saveTodayWonToLocalStorage,
 } from './lib/localStorage'
 
 function App() {
   const [currentGuess, setCurrentGuess] = useState('')
+  const [isGameWonToday] = useState(getHadTodayWonFromLocalStorage)
   const [isGameWon, setIsGameWon] = useState(false)
   const [isWinModalOpen, setIsWinModalOpen] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(() => {
@@ -33,6 +36,8 @@ function App() {
   const [shareComplete, setShareComplete] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
+    saveTodayWonToLocalStorage()
+
     if (loaded?.solution !== solution) {
       return []
     }
@@ -87,6 +92,7 @@ function App() {
 
       if (winningWord) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
+        saveTodayWonToLocalStorage()
         return setIsGameWon(true)
       }
 
@@ -112,20 +118,19 @@ function App() {
     setIsGameLost(false)
   }
 
+  const shownNewWordMessage = isGameWonToday || isGameWon || isGameLost
+
   return (
-    <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div className="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <Alert message="Málo písmen" isOpen={isNotEnoughLetters} />
       <Alert message="Slovo nenájdené" isOpen={isWordNotFoundAlertOpen} />
-      <Alert
-        message={`Prehrali ste, slovo bolo ${solution}`}
-        isOpen={isGameLost}
-      />
+      <Alert message={`Prehrali ste. Skúste opäť.`} isOpen={isGameLost} />
       <Alert
         message="Hra skopírovaná do clipboardu"
         isOpen={shareComplete}
         variant="success"
       />
-      <div className="flex w-80 mx-auto items-center mb-8">
+      <div className="flex w-80 mx-auto items-center mb-4">
         <h1 className="text-xl grow font-bold">Wordle SK</h1>
         <InformationCircleIcon
           className="h-6 w-6 cursor-pointer"
@@ -136,6 +141,11 @@ function App() {
           onClick={resetGame}
         />
       </div>
+      {shownNewWordMessage && (
+        <p className="text-sm text-gray-500 text-center mb-4">
+          Nové slovo na hádanie je dostupné zajtra.
+        </p>
+      )}
       <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
         onChar={onChar}
@@ -160,10 +170,9 @@ function App() {
         isOpen={isAboutModalOpen}
         handleClose={() => setIsAboutModalOpen(false)}
       />
-
       <button
         type="button"
-        className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="mx-auto mt-6 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         onClick={() => setIsAboutModalOpen(true)}
       >
         O hre
