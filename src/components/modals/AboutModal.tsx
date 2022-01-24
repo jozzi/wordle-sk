@@ -63,7 +63,7 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                     <p className="text-sm text-gray-500">
                       Toto je slovenský klon hry Wordle -{' '}
                       <a
-                        href="https://github.com/jozzi/wordle"
+                        href="https://github.com/jozzi/wordle-sk"
                         className="underline font-bold"
                       >
                         pozrite si zdrojáky
