@@ -110,8 +110,8 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     </p>
                     <br />
                     <p className="text-sm text-gray-500">
-                      Slovenská mutácia je náročna, keďže máme oveľa viac písme.
-                      Držíme palce :)
+                      Slovenská mutácia je náročna, keďže máme oveľa viac
+                      písmen. Držíme palce :)
                     </p>
                   </div>
                 </div>
