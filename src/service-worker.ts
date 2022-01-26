@@ -69,6 +69,11 @@ registerRoute(
   })
 );
 
+// skip waiting immediately
+self.addEventListener('install', function (event) {
+  self.skipWaiting();
+});
+
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
 self.addEventListener('message', (event) => {
