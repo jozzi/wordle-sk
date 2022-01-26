@@ -4,16 +4,16 @@ import { XCircleIcon } from '@heroicons/react/outline'
 
 type Props = {
   isOpen: boolean
-  useQuerty: boolean
+  useQwerty: boolean
   handleClose: () => void
-  handleQuertyChange: () => void
+  handleQwertyChange: () => void
 }
 
 export const SettingsModal = ({
   isOpen,
-  useQuerty,
+  useQwerty,
   handleClose,
-  handleQuertyChange,
+  handleQwertyChange,
 }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -69,21 +69,21 @@ export const SettingsModal = ({
                   <div className="mt-4">
                     <Switch.Group>
                       <Switch
-                        checked={useQuerty}
+                        checked={useQwerty}
                         autoFocus={false}
-                        onChange={handleQuertyChange}
+                        onChange={handleQwertyChange}
                         className={`${
-                          useQuerty ? 'bg-blue-600' : 'bg-gray-200'
+                          useQwerty ? 'bg-blue-600' : 'bg-gray-200'
                         } relative inline-flex items-center h-6 rounded-full w-11`}
                       >
                         <span
                           className={`${
-                            useQuerty ? 'translate-x-6' : 'translate-x-1'
+                            useQwerty ? 'translate-x-6' : 'translate-x-1'
                           } inline-block w-4 h-4 transform bg-white rounded-full transition ease-in-out duration-200`}
                         />
                       </Switch>
                       <Switch.Label className="ml-4 align-text-bottom">
-                        QUERTY klávesnica
+                        QWERTY klávesnica
                       </Switch.Label>
                     </Switch.Group>
                   </div>

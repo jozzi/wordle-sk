@@ -68,7 +68,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     <br />
                     <p className="text-sm text-gray-500">
                       Uhádnite slovo na 6 pokusov. Po každom pokuse, sa hádané
-                      písmená zafarbia aby ste vedeli či ste sa trafili.
+                      písmená zafarbia, aby ste vedeli či ste sa trafili.
                       <br />
                       <br />
                       Podľa farby písmen viete, či sa nachádza aj v hádanom
@@ -110,7 +110,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     </p>
                     <br />
                     <p className="text-sm text-gray-500">
-                      Slovenská mutácia je náročna, keďže máme oveľa viac
+                      Slovenská mutácia je náročná, keďže máme oveľa viac
                       písmen. Držíme palce :)
                     </p>
                   </div>

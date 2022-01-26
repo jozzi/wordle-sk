@@ -20,7 +20,7 @@ import { LostModal } from './components/modals/LostModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 
 function App() {
-  const [useQuerty, setUseQuerty] = useState(() => {
+  const [useQwerty, setUseQwerty] = useState(() => {
     const settings = loadSettingsFromLocalStorage()
     return settings?.useQuerty ?? false
   })
@@ -160,7 +160,7 @@ function App() {
       <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
         guesses={guesses}
-        useQuerty={useQuerty}
+        useQuerty={useQwerty}
         onChar={onChar}
         onDelete={onDelete}
         onEnter={onEnter}
@@ -197,10 +197,10 @@ function App() {
       />
       <SettingsModal
         isOpen={isSettingsModalOpen}
-        useQuerty={useQuerty}
+        useQwerty={useQwerty}
         handleClose={() => setIsSettingsModalOpen(false)}
-        handleQuertyChange={() =>
-          setUseQuerty((value) => {
+        handleQwertyChange={() =>
+          setUseQwerty((value) => {
             const newValue = !value
             saveSettingsToLocalStorage({ useQuerty: newValue })
             return newValue

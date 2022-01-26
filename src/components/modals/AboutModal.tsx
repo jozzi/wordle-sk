@@ -77,7 +77,7 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                       </a>
                       <br />
                       <br />
-                      Hra je postavená na základe source kodu autorky Hannah
+                      Hra je postavená na základe source kódu autorky Hannah
                       Park. Jej repo si môžete{' '}
                       <a
                         href="https://github.com/hannahcode/wordle"
