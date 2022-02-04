@@ -7,6 +7,10 @@ body {
   min-height: 100%;
 }
 
+html.dark #root {
+  background-color: rgb(0, 0, 0, 1);
+}
+
 @media (prefers-color-scheme: dark) {
   #root {
     background-color: rgb(0, 0, 0, 1);
