@@ -24,9 +24,13 @@
 
   <title>Wordle SK - Slovo dňa</title>
   <script>
-    if (!location.protocol.startsWith('https') && !location.hostname.startsWith('localhost')) {
-      window.location = 'https://' + window.location.host;
-    }
+    (function () {
+      const settings = localStorage.getItem('gameSettings') || '{}';
+      const useDark = JSON.parse(settings).useDarkMode || false;
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      (useDark || systemDark) && document.documentElement.classList.add('dark')
+    })();
   </script>
 </head>
 

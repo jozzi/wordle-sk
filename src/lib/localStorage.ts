@@ -59,7 +59,8 @@ export const loadStatsFromLocalStorage = () => {
 const gameSettingsKey = 'gameSettings'
 
 export type GameSettings = {
-  useQuerty: boolean
+  useQwerty: boolean
+  useDarkMode: boolean
 }
 
 export const saveSettingsToLocalStorage = (gameSettings: GameSettings) => {
@@ -68,5 +69,6 @@ export const saveSettingsToLocalStorage = (gameSettings: GameSettings) => {
 
 export const loadSettingsFromLocalStorage = () => {
   const settings = localStorage.getItem(gameSettingsKey)
+
   return settings ? (JSON.parse(settings) as GameSettings) : null
 }

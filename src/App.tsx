@@ -18,11 +18,16 @@ import {
 } from './lib/localStorage'
 import { LostModal } from './components/modals/LostModal'
 import { SettingsModal } from './components/modals/SettingsModal'
+import './App.css'
 
 function App() {
   const [useQwerty, setUseQwerty] = useState(() => {
     const settings = loadSettingsFromLocalStorage()
-    return settings?.useQuerty ?? false
+    return settings?.useQwerty ?? false
+  })
+  const [useDarkMode, setUseDarkMode] = useState(() => {
+    const settings = loadSettingsFromLocalStorage()
+    return settings?.useDarkMode ?? false
   })
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
@@ -133,7 +138,7 @@ function App() {
   const shownNewWordMessage = isGameWon || isGameLost
 
   return (
-    <div className="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div className="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8 dark:bg-black dark:text-gray-200">
       <Alert message="Málo písmen" isOpen={isNotEnoughLetters} />
       <Alert message="Slovo nenájdené" isOpen={isWordNotFoundAlertOpen} />
       <Alert
@@ -153,14 +158,14 @@ function App() {
         />
       </div>
       {shownNewWordMessage && (
-        <p className="text-sm text-gray-500 text-center mb-4">
+        <p className="text-sm text-gray-500 dark:text-white text-center mb-4">
           Nové slovo na hádanie bude dostupné zajtra.
         </p>
       )}
       <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
         guesses={guesses}
-        useQuerty={useQwerty}
+        useQwerty={useQwerty}
         onChar={onChar}
         onDelete={onDelete}
         onEnter={onEnter}
@@ -198,11 +203,24 @@ function App() {
       <SettingsModal
         isOpen={isSettingsModalOpen}
         useQwerty={useQwerty}
+        useDarkMode={useDarkMode}
         handleClose={() => setIsSettingsModalOpen(false)}
         handleQwertyChange={() =>
           setUseQwerty((value) => {
             const newValue = !value
-            saveSettingsToLocalStorage({ useQuerty: newValue })
+            saveSettingsToLocalStorage({ useQwerty: newValue, useDarkMode })
+            return newValue
+          })
+        }
+        handleDarkModeChange={() =>
+          setUseDarkMode((value) => {
+            const newValue = !value
+            if (newValue) {
+              document.documentElement.classList.add('dark')
+            } else {
+              document.documentElement.classList.remove('dark')
+            }
+            saveSettingsToLocalStorage({ useDarkMode: newValue, useQwerty })
             return newValue
           })
         }

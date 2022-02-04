@@ -1,3 +1,4 @@
+import { BackspaceIcon, CheckIcon } from '@heroicons/react/outline'
 import { KeyValue } from '../../lib/keyboard'
 import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
@@ -5,14 +6,14 @@ import { useEffect } from 'react'
 
 type Props = {
   guesses: string[]
-  useQuerty: boolean
+  useQwerty: boolean
   onChar: (value: string) => void
   onDelete: () => void
   onEnter: () => void
 }
 
 export const Keyboard = ({
-  useQuerty,
+  useQwerty,
   onChar,
   onDelete,
   onEnter,
@@ -69,7 +70,7 @@ export const Keyboard = ({
         <Key value="E" onClick={onClick} status={charStatuses['E']} />
         <Key value="R" onClick={onClick} status={charStatuses['R']} />
         <Key value="T" onClick={onClick} status={charStatuses['T']} />
-        {useQuerty ? (
+        {useQwerty ? (
           <Key value="Y" onClick={onClick} status={charStatuses['Y']} />
         ) : (
           <Key value="Z" onClick={onClick} status={charStatuses['Z']} />
@@ -96,9 +97,9 @@ export const Keyboard = ({
       </div>
       <div className="flex justify-center">
         <Key width={65.4} value="ENTER" onClick={onClick}>
-          Enter
+          <CheckIcon className="dark:text-white" height={24} />
         </Key>
-        {useQuerty ? (
+        {useQwerty ? (
           <Key value="Z" onClick={onClick} status={charStatuses['Z']} />
         ) : (
           <Key value="Y" onClick={onClick} status={charStatuses['Y']} />
@@ -111,17 +112,7 @@ export const Keyboard = ({
         <Key value="N" onClick={onClick} status={charStatuses['N']} />
         <Key value="M" onClick={onClick} status={charStatuses['M']} />
         <Key width={65.4} value="DELETE" onClick={onClick}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-          >
-            <path
-              fill="var(--color-tone-1)"
-              d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"
-            ></path>
-          </svg>
+          <BackspaceIcon className="dark:text-white" height={24} />
         </Key>
       </div>
     </div>

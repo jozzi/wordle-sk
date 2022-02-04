@@ -5,15 +5,19 @@ import { XCircleIcon } from '@heroicons/react/outline'
 type Props = {
   isOpen: boolean
   useQwerty: boolean
+  useDarkMode: boolean
   handleClose: () => void
   handleQwertyChange: () => void
+  handleDarkModeChange: () => void
 }
 
 export const SettingsModal = ({
   isOpen,
   useQwerty,
-  handleClose,
+  useDarkMode,
   handleQwertyChange,
+  handleDarkModeChange,
+  handleClose,
 }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -22,7 +26,7 @@ export const SettingsModal = ({
         className="fixed z-10 inset-0 overflow-y-auto"
         onClose={handleClose}
       >
-        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -32,7 +36,7 @@ export const SettingsModal = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="fixed inset-0 bg-gray-500 dark:bg-slate-500 bg-opacity-75 dark:bg-opacity-75  transition-opacity" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -51,29 +55,31 @@ export const SettingsModal = ({
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+            <div className="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-6 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
               <div className="absolute right-4 top-4">
                 <XCircleIcon
-                  className="h-6 w-6 cursor-pointer"
+                  className="h-6 w-6 cursor-pointer dark:text-white"
                   onClick={() => handleClose()}
                 />
               </div>
               <div>
-                <div className="text-center">
+                <div className="">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg leading-6 font-medium text-gray-900"
+                    className="text-center text-lg leading-6 font-medium text-gray-900 dark:text-white dark:text-white"
                   >
                     Nastavenia
                   </Dialog.Title>
-                  <div className="mt-4">
+                  <div className="mt-4 dark:text-white">
                     <Switch.Group>
                       <Switch
                         checked={useQwerty}
                         autoFocus={false}
                         onChange={handleQwertyChange}
                         className={`${
-                          useQwerty ? 'bg-blue-600' : 'bg-gray-200'
+                          useQwerty
+                            ? 'bg-blue-600 dark:bg-blue-800'
+                            : 'bg-gray-200 dark:bg-gray-400'
                         } relative inline-flex items-center h-6 rounded-full w-11`}
                       >
                         <span
@@ -84,6 +90,29 @@ export const SettingsModal = ({
                       </Switch>
                       <Switch.Label className="ml-4 align-text-bottom">
                         QWERTY klávesnica
+                      </Switch.Label>
+                    </Switch.Group>
+                  </div>
+                  <div className="mt-4 dark:text-white">
+                    <Switch.Group>
+                      <Switch
+                        checked={useDarkMode}
+                        autoFocus={false}
+                        onChange={handleDarkModeChange}
+                        className={`${
+                          useDarkMode
+                            ? 'bg-blue-600 dark:bg-blue-800'
+                            : 'bg-gray-200 dark:bg-gray-400'
+                        } relative inline-flex items-center h-6 rounded-full w-11`}
+                      >
+                        <span
+                          className={`${
+                            useDarkMode ? 'translate-x-6' : 'translate-x-1'
+                          } inline-block w-4 h-4 transform bg-white rounded-full transition ease-in-out duration-200`}
+                        />
+                      </Switch>
+                      <Switch.Label className="ml-4 align-text-bottom">
+                        Nočný režim
                       </Switch.Label>
                     </Switch.Group>
                   </div>
