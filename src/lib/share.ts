@@ -30,5 +30,5 @@ export const generateEmojiGrid = (guesses: string[]) => {
         })
         .join('')
     })
-    .join('\n')
+    .join('\n');
 }

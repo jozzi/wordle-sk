@@ -1,15 +1,15 @@
-import { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XCircleIcon } from '@heroicons/react/outline'
-import { StatBar } from '../stats/StatBar'
-import { Histogram } from '../stats/Histogram'
-import { GameStats } from '../../lib/localStorage'
+import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { XCircleIcon } from '@heroicons/react/outline';
+import { StatBar } from '../stats/StatBar';
+import { Histogram } from '../stats/Histogram';
+import { GameStats } from '../../lib/localStorage';
 
 type Props = {
-  isOpen: boolean
-  handleClose: () => void
-  gameStats: GameStats
-}
+  isOpen: boolean;
+  handleClose: () => void;
+  gameStats: GameStats;
+};
 
 export const StatsModal = ({ isOpen, handleClose, gameStats }: Props) => {
   return (
@@ -79,5 +79,5 @@ export const StatsModal = ({ isOpen, handleClose, gameStats }: Props) => {
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};

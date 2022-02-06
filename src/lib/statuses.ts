@@ -1,6 +1,6 @@
 import { solution } from './words'
 
-export type CharStatus = 'absent' | 'present' | 'correct'
+export type CharStatus = 'absent' | 'present' | 'correct';
 
 export type CharValue =
   | 'Ľ'

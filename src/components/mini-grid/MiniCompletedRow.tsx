@@ -1,12 +1,12 @@
-import { getGuessStatuses } from '../../lib/statuses'
-import { MiniCell } from './MiniCell'
+import { getGuessStatuses } from '../../lib/statuses';
+import { MiniCell } from './MiniCell';
 
 type Props = {
-  guess: string
-}
+  guess: string;
+};
 
 export const MiniCompletedRow = ({ guess }: Props) => {
-  const statuses = getGuessStatuses(guess)
+  const statuses = getGuessStatuses(guess);
 
   return (
     <div className="flex justify-center mb-1">
@@ -14,5 +14,5 @@ export const MiniCompletedRow = ({ guess }: Props) => {
         <MiniCell key={i} status={statuses[i]} />
       ))}
     </div>
-  )
-}
+  );
+};

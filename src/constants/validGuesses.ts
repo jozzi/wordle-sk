@@ -3845,4 +3845,4 @@ export const VALIDGUESSES = [
   'úkrok',
   'úkryt',
   'úľava'
-]
+];

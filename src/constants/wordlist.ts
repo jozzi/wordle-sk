@@ -3214,4 +3214,4 @@ export const WORDS = [
   'vinea',
   'dvoje',
   'aspoň'
-]
+];

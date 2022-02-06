@@ -1,17 +1,17 @@
-import { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
-import { MiniGrid } from '../mini-grid/MiniGrid'
-import { shareStatus } from '../../lib/share'
-import { XCircleIcon } from '@heroicons/react/outline'
+import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { XIcon } from '@heroicons/react/outline';
+import { MiniGrid } from '../mini-grid/MiniGrid';
+import { shareStatus } from '../../lib/share';
+import { XCircleIcon } from '@heroicons/react/outline';
 
 type Props = {
-  isOpen: boolean
-  guesses: string[]
-  handleClose: () => void
-  handleShare: () => void
-  handleRetry: () => void
-}
+  isOpen: boolean;
+  guesses: string[];
+  handleClose: () => void;
+  handleShare: () => void;
+  handleRetry: () => void;
+};
 
 export const LostModal = ({
   isOpen,
@@ -87,7 +87,7 @@ export const LostModal = ({
                   type="button"
                   className="mb-4 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                   onClick={() => {
-                    handleRetry()
+                    handleRetry();
                   }}
                 >
                   Začať znova
@@ -97,8 +97,8 @@ export const LostModal = ({
                   type="button"
                   className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 text-base font-medium text-indigo-600 dark:text-indigo-200 hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                   onClick={() => {
-                    shareStatus(guesses)
-                    handleShare()
+                    shareStatus(guesses);
+                    handleShare();
                   }}
                 >
                   Zdieľať
@@ -109,5 +109,5 @@ export const LostModal = ({
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};

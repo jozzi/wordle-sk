@@ -1,12 +1,12 @@
-import { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { Cell } from '../grid/Cell'
-import { XCircleIcon } from '@heroicons/react/outline'
+import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { Cell } from '../grid/Cell';
+import { XCircleIcon } from '@heroicons/react/outline';
 
 type Props = {
-  isOpen: boolean
-  handleClose: () => void
-}
+  isOpen: boolean;
+  handleClose: () => void;
+};
 
 export const InfoModal = ({ isOpen, handleClose }: Props) => {
   return (
@@ -121,5 +121,5 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};

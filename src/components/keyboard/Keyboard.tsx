@@ -1,16 +1,16 @@
-import { BackspaceIcon, CheckIcon } from '@heroicons/react/outline'
-import { KeyValue } from '../../lib/keyboard'
-import { getStatuses } from '../../lib/statuses'
-import { Key } from './Key'
-import { useEffect } from 'react'
+import { BackspaceIcon, CheckIcon } from '@heroicons/react/outline';
+import { KeyValue } from '../../lib/keyboard';
+import { getStatuses } from '../../lib/statuses';
+import { Key } from './Key';
+import { useEffect } from 'react';
 
 type Props = {
-  guesses: string[]
-  useQwerty: boolean
-  onChar: (value: string) => void
-  onDelete: () => void
-  onEnter: () => void
-}
+  guesses: string[];
+  useQwerty: boolean;
+  onChar: (value: string) => void;
+  onDelete: () => void;
+  onEnter: () => void;
+};
 
 export const Keyboard = ({
   useQwerty,
@@ -19,36 +19,36 @@ export const Keyboard = ({
   onEnter,
   guesses,
 }: Props) => {
-  const charStatuses = getStatuses(guesses)
+  const charStatuses = getStatuses(guesses);
 
   const onClick = (value: KeyValue) => {
     if (value === 'ENTER') {
-      onEnter()
+      onEnter();
     } else if (value === 'DELETE') {
-      onDelete()
+      onDelete();
     } else {
-      onChar(value)
+      onChar(value);
     }
-  }
+  };
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (e.code === 'Enter') {
-        onEnter()
+        onEnter();
       } else if (e.code === 'Backspace') {
-        onDelete()
+        onDelete();
       } else {
-        const key = e.key.toUpperCase()
+        const key = e.key.toUpperCase();
         if (key.length === 1 && key >= 'A' && key <= 'Z') {
-          onChar(key)
+          onChar(key);
         }
       }
-    }
-    window.addEventListener('keyup', listener)
+    };
+    window.addEventListener('keyup', listener);
     return () => {
-      window.removeEventListener('keyup', listener)
-    }
-  }, [onEnter, onDelete, onChar])
+      window.removeEventListener('keyup', listener);
+    };
+  }, [onEnter, onDelete, onChar]);
 
   return (
     <div>
@@ -116,5 +116,5 @@ export const Keyboard = ({
         </Key>
       </div>
     </div>
-  )
-}
+  );
+};

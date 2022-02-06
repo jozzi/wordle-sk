@@ -1,15 +1,15 @@
-import { Fragment } from 'react'
-import { Dialog, Transition, Switch } from '@headlessui/react'
-import { XCircleIcon } from '@heroicons/react/outline'
+import { Fragment } from 'react';
+import { Dialog, Transition, Switch } from '@headlessui/react';
+import { XCircleIcon } from '@heroicons/react/outline';
 
 type Props = {
-  isOpen: boolean
-  useQwerty: boolean
-  useDarkMode: boolean
-  handleClose: () => void
-  handleQwertyChange: () => void
-  handleDarkModeChange: () => void
-}
+  isOpen: boolean;
+  useQwerty: boolean;
+  useDarkMode: boolean;
+  handleClose: () => void;
+  handleQwertyChange: () => void;
+  handleDarkModeChange: () => void;
+};
 
 export const SettingsModal = ({
   isOpen,
@@ -123,5 +123,5 @@ export const SettingsModal = ({
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};

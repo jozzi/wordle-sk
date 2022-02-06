@@ -1,15 +1,15 @@
-import { ReactNode } from 'react'
-import classnames from 'classnames'
-import { KeyValue } from '../../lib/keyboard'
-import { CharStatus } from '../../lib/statuses'
+import { ReactNode } from 'react';
+import classnames from 'classnames';
+import { KeyValue } from '../../lib/keyboard';
+import { CharStatus } from '../../lib/statuses';
 
 type Props = {
-  children?: ReactNode
-  value: KeyValue
-  width?: number
-  status?: CharStatus
-  onClick: (value: KeyValue) => void
-}
+  children?: ReactNode;
+  value: KeyValue;
+  width?: number;
+  status?: CharStatus;
+  onClick: (value: KeyValue) => void;
+};
 
 export const Key = ({
   children,
@@ -29,7 +29,7 @@ export const Key = ({
       'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white':
         status === 'present',
     }
-  )
+  );
 
   return (
     <div
@@ -39,5 +39,5 @@ export const Key = ({
     >
       {children || value}
     </div>
-  )
-}
+  );
+};

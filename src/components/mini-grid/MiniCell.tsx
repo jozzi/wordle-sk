@@ -1,9 +1,9 @@
-import { CharStatus } from '../../lib/statuses'
-import classnames from 'classnames'
+import { CharStatus } from '../../lib/statuses';
+import classnames from 'classnames';
 
 type Props = {
-  status: CharStatus
-}
+  status: CharStatus;
+};
 
 export const MiniCell = ({ status }: Props) => {
   const classes = classnames(
@@ -13,11 +13,11 @@ export const MiniCell = ({ status }: Props) => {
       'bg-green-500': status === 'correct',
       'bg-yellow-500': status === 'present',
     }
-  )
+  );
 
   return (
     <>
       <div className={classes}></div>
     </>
-  )
-}
+  );
+};
