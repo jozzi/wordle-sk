@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://wordle.sk">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Wordle SK">
-  <meta property="og:description" content="Uhádnite nové slovo každý deň v slovenskom klone hry Wordle.">
+  <meta property="og:description" content="Uhádnite nové slovo každý deň v slovenskej alternatíve hry Wordle.">
   <meta property="og:image" content="https://wordle.sk/screenshot.jpg">
 
   <!-- Twitter Meta Tags -->
@@ -25,10 +25,15 @@
   <title>Wordle SK - Slovo dňa</title>
   <script>
     (function () {
-      const settings = localStorage.getItem('gameSettings') || '{}';
-      const useDark = JSON.parse(settings).useDarkMode || false;
+      try {
+        const settings = localStorage.getItem('gameSettings') || '{}';
+        const useDarkMode = JSON.parse(settings).useDarkMode;
+        const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      useDark && document.documentElement.classList.add('dark')
+        (useDarkMode || (useDarkMode !== false && systemDarkMode)) && document.documentElement.classList.add('dark')
+      } catch (e) {
+        console.error(e);
+      }
     })();
   </script>
 </head>

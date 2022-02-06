@@ -32,7 +32,12 @@ function App() {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isWinModalOpen, setIsWinModalOpen] = useState(false)
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
+    const settings = loadSettingsFromLocalStorage();
+    const systemDark =
+      window.matchMedia('(prefers-color-scheme: dark)').matches || false;
+
+    return settings?.useDarkMode ?? systemDark;
+  });
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(() => {
     const loaded = loadInfoStateFromLocalStorage()
     if (loaded?.infoWatched) {
