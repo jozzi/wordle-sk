@@ -5,14 +5,15 @@ body {
 }
 #root {
   min-height: 100%;
+  background-color: rgb(255, 255, 255);
 }
 
 html.dark #root {
-  background-color: rgb(0, 0, 0, 1);
+  background-color: rgb(0, 0, 0);
 }
 
 @media (prefers-color-scheme: dark) {
   #root {
-    background-color: rgb(0, 0, 0, 1);
+    background-color: rgb(0, 0, 0);
   }
 }
