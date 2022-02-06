@@ -27,9 +27,8 @@
     (function () {
       const settings = localStorage.getItem('gameSettings') || '{}';
       const useDark = JSON.parse(settings).useDarkMode || false;
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      (useDark || systemDark) && document.documentElement.classList.add('dark')
+      useDark && document.documentElement.classList.add('dark')
     })();
   </script>
 </head>
