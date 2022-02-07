@@ -49,6 +49,7 @@ export const WORDS = [
   'učivo',
   'blkom',
   'zákos',
+  'vĺčok',
   'klásť',
   'mágia',
   'nadeň',

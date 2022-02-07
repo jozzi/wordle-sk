@@ -3,6 +3,7 @@ import { solution } from './words'
 export type CharStatus = 'absent' | 'present' | 'correct';
 
 export type CharValue =
+  | 'Ĺ'
   | 'Ľ'
   | 'Š'
   | 'Č'
@@ -13,6 +14,7 @@ export type CharValue =
   | 'Á'
   | 'Í'
   | 'É'
+  | 'Ó'
   | 'Ú'
   | 'Ô'
   | 'Ä'

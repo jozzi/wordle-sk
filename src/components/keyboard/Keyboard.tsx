@@ -53,6 +53,7 @@ export const Keyboard = ({
   return (
     <div>
       <div className="flex justify-center mb-1">
+        <Key value="Ĺ" onClick={onClick} status={charStatuses['Ĺ']} />
         <Key value="Ľ" onClick={onClick} status={charStatuses['Ľ']} />
         <Key value="Š" onClick={onClick} status={charStatuses['Š']} />
         <Key value="Č" onClick={onClick} status={charStatuses['Č']} />
@@ -63,6 +64,7 @@ export const Keyboard = ({
         <Key value="Á" onClick={onClick} status={charStatuses['Á']} />
         <Key value="Í" onClick={onClick} status={charStatuses['Í']} />
         <Key value="É" onClick={onClick} status={charStatuses['É']} />
+        <Key value="Ó" onClick={onClick} status={charStatuses['Ó']} />
       </div>
       <div className="flex justify-center mb-1">
         <Key value="Q" onClick={onClick} status={charStatuses['Q']} />
