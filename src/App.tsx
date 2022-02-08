@@ -220,8 +220,10 @@ function App() {
             const newValue = !value;
             if (newValue) {
               document.documentElement.classList.add('dark');
+              document.documentElement.classList.remove('white');
             } else {
               document.documentElement.classList.remove('dark');
+              document.documentElement.classList.add('white');
             }
             saveSettingsToLocalStorage({ useDarkMode: newValue, useQwerty });
             return newValue;
