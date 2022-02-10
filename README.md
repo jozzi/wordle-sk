@@ -17,7 +17,7 @@ There are plans to further extend the functionality with:
 - Hard mode which force you to reuse correctly guessed letters (same as in ordiginal)
 - Statictics to compare against other players
 
-I implemented Tailwind mostly because I wanted to learn how to use Tailwind CSS, but I also took advantage of [Tailwind UI](https://tailwindui.com/) with their [headless package](https://headlessui.dev/) to build the modals and notifications. This was such an easy way to build simple popups for how to play, winning the game, and invalid words.
+Styling is done using [Tailwind UI](https://tailwindui.com/) with their [headless package](https://headlessui.dev/) to build the modals and notifications. This allowed to significantly speed up development and get hands on experience on using Tailwind UI.
 
 _To Run Locally:_
 Clone the repository and perform the following command line actions:
