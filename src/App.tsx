@@ -1,4 +1,8 @@
-import { InformationCircleIcon, CogIcon } from '@heroicons/react/outline';
+import {
+  InformationCircleIcon,
+  CogIcon,
+  ChartBarIcon,
+} from '@heroicons/react/outline';
 import { useState, useEffect } from 'react';
 import { Alert } from './components/alerts/Alert';
 import { Grid } from './components/grid/Grid';
@@ -19,6 +23,7 @@ import {
 import { LostModal } from './components/modals/LostModal';
 import { SettingsModal } from './components/modals/SettingsModal';
 import './App.css';
+import { StatsModal } from './components/modals/StatsModal';
 
 function App() {
   const [useQwerty, setUseQwerty] = useState(() => {
@@ -43,6 +48,7 @@ function App() {
     }
     return true;
   });
+  const [isStatsModalOpen, setIsStatsModalOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false);
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false);
@@ -155,6 +161,10 @@ function App() {
           className="h-6 w-6 cursor-pointer"
           onClick={() => setIsInfoModalOpen(true)}
         />
+        <ChartBarIcon
+          className="h-6 w-6 cursor-pointer"
+          onClick={() => setIsStatsModalOpen(true)}
+        />
         <CogIcon
           className="h-6 w-6 ml-2 cursor-pointer"
           onClick={() => setIsSettingsModalOpen(true)}
@@ -202,6 +212,11 @@ function App() {
       <AboutModal
         isOpen={isAboutModalOpen}
         handleClose={() => setIsAboutModalOpen(false)}
+      />
+      <StatsModal
+        isOpen={isStatsModalOpen}
+        gameStats={stats}
+        handleClose={() => setIsStatsModalOpen(false)}
       />
       <SettingsModal
         isOpen={isSettingsModalOpen}

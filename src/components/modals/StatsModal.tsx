@@ -68,10 +68,18 @@ export const StatsModal = ({ isOpen, handleClose, gameStats }: Props) => {
                     Štatistika
                   </Dialog.Title>
                   <StatBar gameStats={gameStats} />
-                  <h4 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">
-                    Pokusy
-                  </h4>
-                  <Histogram gameStats={gameStats} />
+                  {gameStats.totalGames > 0 ? (
+                    <>
+                      <h4 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+                        Pokusy
+                      </h4>
+                      <Histogram gameStats={gameStats} />
+                    </>
+                  ) : (
+                    <p className="text-sm text-gray-500 dark:text-white mt-6">
+                      Dokončite aspoň jednu hru pre zobrazenie štatistiky
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
