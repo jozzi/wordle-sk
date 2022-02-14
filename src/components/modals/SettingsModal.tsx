@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Dialog, Transition, Switch } from '@headlessui/react';
-import { XCircleIcon } from '@heroicons/react/outline';
+import { GlobeIcon, XCircleIcon } from '@heroicons/react/outline';
 
 type Props = {
   isOpen: boolean;
@@ -19,6 +19,9 @@ export const SettingsModal = ({
   handleDarkModeChange,
   handleClose,
 }: Props) => {
+  // @ts-ignore
+  const cookiehub = window.cookiehub as any;
+
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -115,6 +118,17 @@ export const SettingsModal = ({
                         Nočný režim
                       </Switch.Label>
                     </Switch.Group>
+                    {cookiehub && (
+                      <div
+                        className="mt-4 dark:text-white"
+                        onClick={() => cookiehub.openSettings()}
+                      >
+                        <GlobeIcon className="h-6 w-6 cursor-pointer ml-2 inline-block mr-2" />
+                        <label className="ml-4 inline-block align-bottom cursor-pointer">
+                          Nastavenia Cookies
+                        </label>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
