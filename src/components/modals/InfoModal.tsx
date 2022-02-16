@@ -62,6 +62,11 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500 dark:text-white ">
+                      Hrajte hru Wordle slovensky! Slovo dňa je hra inšpirovaná
+                      anglickým originálom, prispôsobená pre Slovensko,
+                      slovenský jazyk a slovenskú klávesnicu.
+                    </p>
+                    <p className="text-sm text-gray-500 dark:text-white ">
                       Každý deň hra ponúka nové slovo na hádanie. Ak ho
                       neuhádnete môžete pokus opakovať.
                     </p>
