@@ -66,6 +66,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                       anglickým originálom, prispôsobená pre Slovensko,
                       slovenský jazyk a slovenskú klávesnicu.
                     </p>
+                    <br />
                     <p className="text-sm text-gray-500 dark:text-white ">
                       Každý deň hra ponúka nové slovo na hádanie. Ak ho
                       neuhádnete môžete pokus opakovať.
