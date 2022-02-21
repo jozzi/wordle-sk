@@ -4,5 +4,7 @@
   "editor.codeLens": true,
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml"
-  }
+  },
+  "typescript.referencesCodeLens.enabled": true,
+  "editor.suggest.localityBonus": true
 }

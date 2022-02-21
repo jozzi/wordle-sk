@@ -1,6 +1,6 @@
 import { BackspaceIcon, CheckIcon } from '@heroicons/react/outline';
 import { KeyValue } from '../../lib/keyboard';
-import { getStatuses } from '../../lib/statuses';
+import { CharValue, CharValues, getStatuses } from '../../lib/statuses';
 import { Key } from './Key';
 import { useEffect } from 'react';
 
@@ -38,8 +38,9 @@ export const Keyboard = ({
       } else if (e.code === 'Backspace') {
         onDelete();
       } else {
-        const key = e.key.toUpperCase();
-        if (key.length === 1 && key >= 'A' && key <= 'Z') {
+        const key = e.key.toUpperCase() as CharValue;
+
+        if (key.length === 1 && CharValues.includes(key)) {
           onChar(key);
         }
       }

@@ -24,6 +24,7 @@ import { LostModal } from './components/modals/LostModal';
 import { SettingsModal } from './components/modals/SettingsModal';
 import './App.css';
 import { StatsModal } from './components/modals/StatsModal';
+import { UpdateChecker } from './components/utils/UpdateChecker';
 
 function App() {
   const [useQwerty, setUseQwerty] = useState(() => {
@@ -147,110 +148,113 @@ function App() {
   const shownNewWordMessage = isGameWon || isGameLost;
 
   return (
-    <div className="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8 dark:bg-black dark:text-gray-200">
-      <Alert message="Málo písmen" isOpen={isNotEnoughLetters} />
-      <Alert message="Slovo nenájdené" isOpen={isWordNotFoundAlertOpen} />
-      <Alert
-        message="Hra skopírovaná do clipboardu"
-        isOpen={shareComplete}
-        variant="success"
-      />
-      <div className="flex w-80 mx-auto items-center mb-4">
-        <h1 className="text-xl grow font-bold">Wordle SK - Slovo dňa</h1>
-        <InformationCircleIcon
-          className="h-6 w-6 cursor-pointer"
-          onClick={() => setIsInfoModalOpen(true)}
+    <>
+      <UpdateChecker />
+      <div className="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8 dark:bg-black dark:text-gray-200">
+        <Alert message="Málo písmen" isOpen={isNotEnoughLetters} />
+        <Alert message="Slovo nenájdené" isOpen={isWordNotFoundAlertOpen} />
+        <Alert
+          message="Hra skopírovaná do clipboardu"
+          isOpen={shareComplete}
+          variant="success"
         />
-        <ChartBarIcon
-          className="h-6 w-6 cursor-pointer"
-          onClick={() => setIsStatsModalOpen(true)}
+        <div className="flex w-80 mx-auto items-center mb-4">
+          <h1 className="text-xl grow font-bold">Wordle SK - Slovo dňa</h1>
+          <InformationCircleIcon
+            className="h-6 w-6 cursor-pointer"
+            onClick={() => setIsInfoModalOpen(true)}
+          />
+          <ChartBarIcon
+            className="h-6 w-6 cursor-pointer"
+            onClick={() => setIsStatsModalOpen(true)}
+          />
+          <CogIcon
+            className="h-6 w-6 ml-2 cursor-pointer"
+            onClick={() => setIsSettingsModalOpen(true)}
+          />
+        </div>
+        {shownNewWordMessage && (
+          <p className="text-sm text-gray-500 dark:text-white text-center mb-4">
+            Nové slovo na hádanie bude dostupné zajtra.
+          </p>
+        )}
+        <Grid guesses={guesses} currentGuess={currentGuess} />
+        <Keyboard
+          guesses={guesses}
+          useQwerty={useQwerty}
+          onChar={onChar}
+          onDelete={onDelete}
+          onEnter={onEnter}
         />
-        <CogIcon
-          className="h-6 w-6 ml-2 cursor-pointer"
-          onClick={() => setIsSettingsModalOpen(true)}
+        <LostModal
+          isOpen={isLostModalOpen}
+          guesses={guesses}
+          handleClose={() => setIsLostModalOpen(false)}
+          handleShare={() => {
+            setIsLostModalOpen(false);
+            setShareComplete(true);
+            return setTimeout(() => {
+              setShareComplete(false);
+            }, 2000);
+          }}
+          handleRetry={resetGame}
         />
+        <WinModal
+          isOpen={isWinModalOpen}
+          handleClose={() => setIsWinModalOpen(false)}
+          guesses={guesses}
+          handleShare={() => {
+            setIsWinModalOpen(false);
+            setShareComplete(true);
+            return setTimeout(() => {
+              setShareComplete(false);
+            }, 2000);
+          }}
+        />
+        <InfoModal isOpen={isInfoModalOpen} handleClose={closeInfoModal} />
+        <AboutModal
+          isOpen={isAboutModalOpen}
+          handleClose={() => setIsAboutModalOpen(false)}
+        />
+        <StatsModal
+          isOpen={isStatsModalOpen}
+          gameStats={stats}
+          handleClose={() => setIsStatsModalOpen(false)}
+        />
+        <SettingsModal
+          isOpen={isSettingsModalOpen}
+          useQwerty={useQwerty}
+          useDarkMode={useDarkMode}
+          handleClose={() => setIsSettingsModalOpen(false)}
+          handleQwertyChange={() =>
+            setUseQwerty((value) => {
+              const newValue = !value;
+              saveSettingsToLocalStorage({ useQwerty: newValue, useDarkMode });
+              return newValue;
+            })
+          }
+          handleDarkModeChange={() =>
+            setUseDarkMode((value) => {
+              const newValue = !value;
+              if (newValue) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+              saveSettingsToLocalStorage({ useDarkMode: newValue, useQwerty });
+              return newValue;
+            })
+          }
+        />
+        <button
+          type="button"
+          className="mx-auto mt-6 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onClick={() => setIsAboutModalOpen(true)}
+        >
+          O hre
+        </button>
       </div>
-      {shownNewWordMessage && (
-        <p className="text-sm text-gray-500 dark:text-white text-center mb-4">
-          Nové slovo na hádanie bude dostupné zajtra.
-        </p>
-      )}
-      <Grid guesses={guesses} currentGuess={currentGuess} />
-      <Keyboard
-        guesses={guesses}
-        useQwerty={useQwerty}
-        onChar={onChar}
-        onDelete={onDelete}
-        onEnter={onEnter}
-      />
-      <LostModal
-        isOpen={isLostModalOpen}
-        guesses={guesses}
-        handleClose={() => setIsLostModalOpen(false)}
-        handleShare={() => {
-          setIsLostModalOpen(false);
-          setShareComplete(true);
-          return setTimeout(() => {
-            setShareComplete(false);
-          }, 2000);
-        }}
-        handleRetry={resetGame}
-      />
-      <WinModal
-        isOpen={isWinModalOpen}
-        handleClose={() => setIsWinModalOpen(false)}
-        guesses={guesses}
-        handleShare={() => {
-          setIsWinModalOpen(false);
-          setShareComplete(true);
-          return setTimeout(() => {
-            setShareComplete(false);
-          }, 2000);
-        }}
-      />
-      <InfoModal isOpen={isInfoModalOpen} handleClose={closeInfoModal} />
-      <AboutModal
-        isOpen={isAboutModalOpen}
-        handleClose={() => setIsAboutModalOpen(false)}
-      />
-      <StatsModal
-        isOpen={isStatsModalOpen}
-        gameStats={stats}
-        handleClose={() => setIsStatsModalOpen(false)}
-      />
-      <SettingsModal
-        isOpen={isSettingsModalOpen}
-        useQwerty={useQwerty}
-        useDarkMode={useDarkMode}
-        handleClose={() => setIsSettingsModalOpen(false)}
-        handleQwertyChange={() =>
-          setUseQwerty((value) => {
-            const newValue = !value;
-            saveSettingsToLocalStorage({ useQwerty: newValue, useDarkMode });
-            return newValue;
-          })
-        }
-        handleDarkModeChange={() =>
-          setUseDarkMode((value) => {
-            const newValue = !value;
-            if (newValue) {
-              document.documentElement.classList.add('dark');
-            } else {
-              document.documentElement.classList.remove('dark');
-            }
-            saveSettingsToLocalStorage({ useDarkMode: newValue, useQwerty });
-            return newValue;
-          })
-        }
-      />
-      <button
-        type="button"
-        className="mx-auto mt-6 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        onClick={() => setIsAboutModalOpen(true)}
-      >
-        O hre
-      </button>
-    </div>
+    </>
   );
 }
 
