@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       transitionProperty: {
         'top': 'top',
-        'top-height': 'top,height'
+        'top-height': 'top,height',
+        'cell': 'background-color, font-size',
       },
     },
   },
