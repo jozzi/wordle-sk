@@ -220,6 +220,13 @@ function App() {
           isOpen={isStatsModalOpen}
           gameStats={stats}
           handleClose={() => setIsStatsModalOpen(false)}
+          handleShare={() => {
+            setIsStatsModalOpen(false);
+            setShareComplete(true);
+            return setTimeout(() => {
+              setShareComplete(false);
+            }, 2000);
+          }}
         />
         <SettingsModal
           isOpen={isSettingsModalOpen}
