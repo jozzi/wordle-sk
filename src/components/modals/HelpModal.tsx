@@ -81,7 +81,9 @@ export const HelpModal = ({ isOpen, handleClose }: Props) => {
                       <br />
                       <a
                         href="https://ktopomozeukrajine.sk/"
+                        target="_blank"
                         className="underline font-bold"
+                        rel="noreferrer"
                       >
                         {' '}
                         Kto pomôže Ukrajine
