@@ -7,7 +7,7 @@ type Props = {
   handleClose: () => void;
 };
 
-export const AboutModal = ({ isOpen, handleClose }: Props) => {
+export const HelpModal = ({ isOpen, handleClose }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -57,28 +57,35 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900 dark:text-white "
                   >
-                    O hre
+                    Pomôžme Ukrajine
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500 dark:text-white">
-                      Toto je slovenská hra inšpirovaná orinálom hry Wordle -{' '}
-                      <a
-                        href="https://www.powerlanguage.co.uk/wordle/"
-                        className="underline font-bold"
-                      >
-                        zahrajte si aj anglický originál.
-                      </a>
+                      V aktuálnej vypätej situácii potrebuje Ukrajina aj našu
+                      pomoc.
+                      <br />
+                      Rozhodli sme sa pridať do hry reklamy a celý výťažok z nej
+                      venujeme na pomoc ľuďom na Ukrajine prostredníctvom
+                      platformy "Kto pomôže Ukrajine".
                       <br />
                       <br />
-                      Hra je postavená na základe source kódu autorky Hannah
-                      Park. Jej repo si môžete{' '}
+                      <span className="font-bold text-lg">
+                        Vy môžete pomôcť tiež!
+                      </span>
+                      <br />
+                      <br />
+                      Už len tým, že nevypnete reklamy v našej hre.
+                      <br />
+                      <br />
+                      Ak chcete pomôcť viac navštívte stránku projektu
+                      <br />
                       <a
-                        href="https://github.com/hannahcode/wordle"
+                        href="https://ktopomozeukrajine.sk/"
                         className="underline font-bold"
                       >
-                        pozrieť tu
+                        {' '}
+                        Kto pomôže Ukrajine
                       </a>
-                      .
                     </p>
                   </div>
                 </div>

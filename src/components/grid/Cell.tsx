@@ -43,6 +43,7 @@ export const Cell = ({ value, status, animate = false }: Props) => {
       className={classes}
       style={{
         fontSize: `${size}rem`,
+        borderColor: '#005bbb',
       }}
     >
       {value}

@@ -2,6 +2,7 @@ const infoStateKey = 'infoState';
 
 type StoredInfoState = {
   infoWatched: boolean;
+  helpInfoWatched: boolean;
 }
 
 export const saveInfoStateToLocalStorage = (infoState: StoredInfoState) => {

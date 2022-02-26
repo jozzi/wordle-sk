@@ -25,6 +25,7 @@ import { SettingsModal } from './components/modals/SettingsModal';
 import './App.css';
 import { StatsModal } from './components/modals/StatsModal';
 import { UpdateChecker } from './components/utils/UpdateChecker';
+import { HelpModal } from './components/modals/HelpModal';
 
 function App() {
   const [useQwerty, setUseQwerty] = useState(() => {
@@ -42,15 +43,9 @@ function App() {
   const [isGameWon, setIsGameWon] = useState(false);
   const [isWinModalOpen, setIsWinModalOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
-  const [isInfoModalOpen, setIsInfoModalOpen] = useState(() => {
-    const loaded = loadInfoStateFromLocalStorage();
-    if (loaded?.infoWatched) {
-      return false;
-    }
-    return true;
-  });
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false);
-  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [isHelpUkraineModalOpen, setHelpUkraineModalOpen] = useState(false);
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false);
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false);
   const [isGameLost, setIsGameLost] = useState(false);
@@ -88,6 +83,19 @@ function App() {
       setIsLostModalOpen(true);
     }
   }, [isGameLost]);
+
+  useEffect(() => {
+    const loaded = loadInfoStateFromLocalStorage();
+
+    const helpWatched = loaded?.helpInfoWatched;
+    const infoWatched = loaded?.infoWatched;
+
+    if (!helpWatched) {
+      setHelpUkraineModalOpen(true);
+    } else if (!infoWatched && isHelpUkraineModalOpen === false) {
+      setIsInfoModalOpen(true);
+    }
+  }, [isHelpUkraineModalOpen]);
 
   const onChar = (value: string) => {
     if (currentGuess.length < 5 && guesses.length < 6 && !isGameWon) {
@@ -133,8 +141,19 @@ function App() {
   };
 
   const closeInfoModal = () => {
-    saveInfoStateToLocalStorage({ infoWatched: true });
+    saveInfoStateToLocalStorage({ infoWatched: true, helpInfoWatched: true });
     setIsInfoModalOpen(false);
+  };
+
+  const closeHelpUkraineModal = () => {
+    const loaded = loadInfoStateFromLocalStorage();
+
+    saveInfoStateToLocalStorage({
+      infoWatched: !!loaded?.infoWatched,
+      helpInfoWatched: true,
+    });
+
+    setHelpUkraineModalOpen(false);
   };
 
   const resetGame = () => {
@@ -212,9 +231,9 @@ function App() {
           }}
         />
         <InfoModal isOpen={isInfoModalOpen} handleClose={closeInfoModal} />
-        <AboutModal
-          isOpen={isAboutModalOpen}
-          handleClose={() => setIsAboutModalOpen(false)}
+        <HelpModal
+          isOpen={isHelpUkraineModalOpen}
+          handleClose={closeHelpUkraineModal}
         />
         <StatsModal
           isOpen={isStatsModalOpen}
@@ -255,10 +274,17 @@ function App() {
         />
         <button
           type="button"
-          className="mx-auto mt-6 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          onClick={() => setIsAboutModalOpen(true)}
+          className="mx-auto mt-6 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-lg"
+          onClick={() => setHelpUkraineModalOpen(true)}
+          style={{
+            textShadow: '0 0 1px black',
+            backgroundImage:
+              'linear-gradient(180deg, #005bbb 0%, #005bbb 50%, #ffd500 50%, #ffd500 100%)',
+            borderTop: '1px solid #005bbb',
+            borderBottom: '1px solid #ffd500',
+          }}
         >
-          O hre
+          Pomôžme Ukrajine
         </button>
       </div>
     </>
