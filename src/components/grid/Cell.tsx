@@ -6,9 +6,15 @@ type Props = {
   value?: string;
   status?: CharStatus;
   animate?: boolean;
+  border?: 'default' | 'blue';
 };
 
-export const Cell = ({ value, status, animate = false }: Props) => {
+export const Cell = ({
+  value,
+  status,
+  animate = false,
+  border = 'blue',
+}: Props) => {
   const [size, setSize] = useState(1.25);
 
   useEffect(() => {
@@ -43,7 +49,7 @@ export const Cell = ({ value, status, animate = false }: Props) => {
       className={classes}
       style={{
         fontSize: `${size}rem`,
-        borderColor: '#005bbb',
+        borderColor: border === 'blue' ? '#005bbb' : undefined,
       }}
     >
       {value}
