@@ -82,22 +82,22 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="S" status="correct" />
-                      <Cell value="M" />
-                      <Cell value="R" />
-                      <Cell value="E" />
-                      <Cell value="K" />
+                      <Cell value="S" status="correct" border="default" />
+                      <Cell value="M" border="default" />
+                      <Cell value="R" border="default" />
+                      <Cell value="E" border="default" />
+                      <Cell value="K" border="default" />
                     </div>
                     <p className="text-sm text-gray-500 dark:text-white">
                       Písmeno S je zafarbené zeleno, keďže je na správnom mieste
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="K" />
-                      <Cell value="U" />
-                      <Cell value="L" status="present" />
-                      <Cell value="M" />
-                      <Cell value="A" />
+                      <Cell value="K" border="default" />
+                      <Cell value="U" border="default" />
+                      <Cell value="L" status="present" border="default" />
+                      <Cell value="M" border="default" />
+                      <Cell value="A" border="default" />
                     </div>
                     <p className="text-sm text-gray-500 dark:text-white">
                       Písmeno L je zafarbené žlto, keďže je v slove na inom
@@ -105,11 +105,11 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     </p>
 
                     <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="C" />
-                      <Cell value="H" />
-                      <Cell value="A" />
-                      <Cell value="O" status="absent" />
-                      <Cell value="S" />
+                      <Cell value="C" border="default" />
+                      <Cell value="H" border="default" />
+                      <Cell value="A" border="default" />
+                      <Cell value="O" status="absent" border="default" />
+                      <Cell value="S" border="default" />
                     </div>
                     <p className="text-sm text-gray-500 dark:text-white">
                       Písmeno O sa v hľadanom slove nenachádza.
