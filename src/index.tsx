@@ -5,11 +5,21 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+const prerenderRoot = document.getElementById('pre-render-root');
+const appRoot = document.getElementById('root');
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  appRoot,
+  () => {
+    prerenderRoot!.style.opacity = '0';
+
+    setTimeout(() => {
+      prerenderRoot && document.body.removeChild(prerenderRoot);
+    }, 500);
+  }
 );
 
 // If you want your app to work offline and load faster, you can change
