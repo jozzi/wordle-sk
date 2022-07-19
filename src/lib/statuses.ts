@@ -19,6 +19,7 @@ export const CharValues = [
   'Ô',
   'Ä',
   'Ň',
+  'Ŕ',
   'Q',
   'W',
   'E',
